@@ -5,7 +5,7 @@ import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlig
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import remarkGfm from "remark-gfm";
 import { Post, PostDetailData } from "../service/post";
-import { metadata } from "../layout";
+import { BiCalendarAlt } from "react-icons/bi";
 
 type postType = {
   post: PostDetailData;
@@ -30,7 +30,10 @@ const MarkDownPost = ({ post }: postType) => {
           <h4>{post.description}</h4>
           <hr className="border-b-4 border-indigo-500 my-5" />
         </div>
-        <p className="blue">{post.date.toString()}</p>
+        <p className="blue flex gap-2 text-indigo-600">
+          <BiCalendarAlt className="mt-[.25em] " />
+          {post.date.toString()}
+        </p>
       </div>
 
       <ReactMarkdown

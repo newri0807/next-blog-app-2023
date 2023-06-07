@@ -3,9 +3,9 @@
 import React from "react";
 import { Post } from "../service/post";
 
-interface PostCardProps {
+type PostCardProps = {
   item: Post;
-}
+};
 
 const PostCard = ({ item }: PostCardProps) => {
   return (

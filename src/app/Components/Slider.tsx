@@ -8,9 +8,9 @@ import "react-multi-carousel/lib/styles.css";
 import { Post } from "../service/post";
 import PostCard from "../Components/PostCard";
 
-interface SliderProps {
+type SliderProps = {
   notFeaturedPosts: Post[];
-}
+};
 
 const Slider: React.FC<SliderProps> = ({ notFeaturedPosts }) => {
   const responsive = {
