@@ -1,39 +1,28 @@
-const nodemailer = require("nodemailer");
+import { sendEmail } from "@/app/service/sendEmail";
+export async function POST(req: Request) {
+  const body = await req.json(); // body = ReadableStream
+  // 스키마 정의
 
-export default async function handler(req: any, res: any) {
-  if (req.method === "POST") {
-    // 클라이언트로부터 받은 데이터
-    const { email, subject, message } = req.body;
+  // 전송받은 데이터 유효성 검사
+  // if (!bodySchema.isValidSync(body)) {
+  //   return new Response(JSON.stringify({ message: "메일 전송에 실패함" }), {
+  //     status: 400,
+  //   });
+  // }
 
-    try {
-      // Nodemailer 설정
-      let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false,
-        auth: {
-          user: "your-email@example.com", // 이메일 계정
-          pass: "your-password", // 이메일 계정 비밀번호
-        },
+  // Nodemailer 이메일 전송 로직
+  return sendEmail(body)
+    .then(
+      () =>
+        new Response(JSON.stringify({ message: "메일을 성공적으로 보냈음" }), {
+          status: 200,
+        })
+    )
+    .catch((error) => {
+      console.error(error);
+
+      return new Response(JSON.stringify({ message: "메일 전송에 실패함" }), {
+        status: 500,
       });
-
-      // 이메일 전송
-      let info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>',
-        to: email,
-        subject: subject,
-        text: message,
-      });
-
-      console.log("Message sent: %s", info.messageId);
-
-      // 클라이언트로 응답
-      res.status(200).json({ message: "Email sent" });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      res.status(500).json({ message: "Failed to send email" });
-    }
-  } else {
-    res.status(405).json({ message: "Method Not Allowed" });
-  }
+    });
 }

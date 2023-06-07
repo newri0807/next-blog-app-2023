@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getAllPosts } from "../service/post";
-import Link from "next/link";
-import PostCard from "../Components/PostCard";
-import SideTabmenu from "../Components/SideTabmenu";
 import FilteredPosts from "../Components/FilteredPosts";
 
 const Page = async () => {

@@ -52,11 +52,13 @@ const EmailSendForm = () => {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         console.log("이메일이 성공적으로 전송되었습니다.");
         // 이메일 전송 성공 처리
       } else {
-        console.error("이메일 전송에 실패했습니다.");
+        throw new Error(data.message || "서버 요청에 실패함");
         // 이메일 전송 실패 처리
       }
     } catch (err: any) {

@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <TopNavi />
         <main className="flex min-h-screen flex-col  justify-between p-24">
           {children}

@@ -34,9 +34,9 @@ export default async function Home() {
 
       <section className="FearturedPosts w-full  my-20">
         <h1 className="font-bold text-2xl mb-4">Feartured Posts</h1>
-        <ul className="flex flex-wrap w-full gap-2 ">
+        <ul className="flex flex-wrap w-full gap-2">
           {featuredPosts.map((item, index) => (
-            <li key={index}>
+            <li key={index} className="w-full md:w-[31.3%]">
               <Link href={`/Posts/${item.path}`}>
                 <PostCard item={item} key={index} />
               </Link>
