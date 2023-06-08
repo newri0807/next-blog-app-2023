@@ -4,9 +4,11 @@ import ReactMarkdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import remarkGfm from "remark-gfm";
-import { Post, PostDetailData, getAllPosts } from "../service/post";
+import rehypeRaw from "rehype-raw";
+import { Post, PostDetailData } from "../service/post";
 import { BiCalendarAlt } from "react-icons/bi";
 import RandomItems from "./RandomItems";
+import Image from "next/image";
 
 type postType = {
   post: PostDetailData;
@@ -45,7 +47,8 @@ const MarkDownPost = ({ post, allPostsData }: postType) => {
       </div>
 
       <ReactMarkdown
-        className="px-4"
+        className="px-4 mb-10 markdown"
+        rehypePlugins={[rehypeRaw]}
         remarkPlugins={[remarkGfm]}
         components={{
           code({ node, inline, className, children, ...props }) {
@@ -60,15 +63,33 @@ const MarkDownPost = ({ post, allPostsData }: postType) => {
                 {String(children).replace(/\n$/, "")}
               </SyntaxHighlighter>
             ) : (
-              <code {...props}>{children}</code>
+              <code {...props} className={className}>
+                {children}
+              </code>
             );
           },
           h1: headingRenderer, // Customize rendering for h1 heading
           h2: headingRenderer, // Customize rendering for h2 heading
           h3: headingRenderer, // Customize rendering for h3 heading
+          h4: headingRenderer, // Customize rendering for h4 heading
+          h5: headingRenderer, // Customize rendering for h5 heading
+          img: (image) => (
+            <Image
+              className="w-full max-h-60 object-cover"
+              src={image.src || ""}
+              alt={image.alt || ""}
+              width={500}
+              height={350}
+            />
+          ),
         }}
       >
-        {post.content}
+        {post.content
+          .replace(/\n\s\n\s/gi, "\n\n&nbsp;\n\n")
+          .replace(/\*\*/gi, "@$_%!^")
+          .replace(/\**\*/gi, "/")
+          .replace(/@\$_%!\^/gi, "**")
+          .replace(/<\/?u>/gi, "*")}
       </ReactMarkdown>
 
       {/* 랜덤으로 선택된 UI 컴포넌트 */}
