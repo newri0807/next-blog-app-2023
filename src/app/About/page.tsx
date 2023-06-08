@@ -9,12 +9,12 @@ const page = () => {
         <h1 className="text-2xl font-bold my-2 w-full">Who am I?</h1>
         <p className="my-1  w-full">개발을 사랑하고픈(?) 프론트엔드 개발자</p>
         <p className="my-1  w-full">
-          풀스텍 개발자를 목표로 하고 있는 주니어 말하는 감자
+          풀스텍 개발자를 목표로 하고 있는 주니어 🥔
         </p>
         <br />
         <h1 className="text-2xl font-bold my-2 w-full">Career</h1>
-        <p className="my-1  w-full">(주)카이토리 (~Now)</p>
-        <p className="my-1  w-full">(주)블루아이(2020~2022)</p>
+        <p className="my-1  w-full">㈜카이토리 (~Now)</p>
+        <p className="my-1  w-full">㈜블루아이(2021~2022)</p>
         <br />
         <h1 className="text-2xl font-bold my-2 w-full">Skills </h1>
         <p className="my-1  w-full">React, JavaScript, ASP.NET</p>

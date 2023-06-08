@@ -17,7 +17,7 @@ const FilteredPosts = ({ posts, Categories }: any) => {
       );
       setData(filteredData);
     }
-  }, [selectedCategory]);
+  }, [posts, selectedCategory]);
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);

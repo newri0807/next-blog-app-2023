@@ -46,6 +46,8 @@ const EmailSendForm = () => {
       // 이메일을 API로 보내기
       const response = await fetch("/api/email", {
         method: "POST",
+        cache: "no-store",
+        next: { revalidate: 0 },
         headers: {
           "Content-Type": "application/json",
         },
