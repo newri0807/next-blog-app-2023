@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 import MarkDownPost from "@/app/Components/MarkDownPost";
-import { getPostDetail } from "@/app/service/post";
+import { getAllPosts, getPostDetail } from "@/app/service/post";
 import React from "react";
 
 type Props = {
@@ -18,17 +18,16 @@ export async function generateMetadata({ params }: Props) {
 
 const page = async ({ params }: Props) => {
   const post = await getPostDetail(params.slug);
-  console.log(post);
-  // eslint-disable-next-line react/no-children-prop
+  const allPostsData = await getAllPosts();
+
   return (
-    <div className="rounded-md overflow-hidden shadow-md hover:shadow-xl">
-      <img
-        className="w-full max-h-[300px]"
-        src={`/images/posts/${params.slug}.png`}
-        alt={`${params.slug} pic`}
-      />
-      <div className="flex flex-col posts-center p-4">
-        <MarkDownPost post={post} />
+    <div className="rounded-md overflow-hidden shadow-md hover:shadow-xl ">
+      <div
+        className="w-full h-[300px] rounded-t-lg bg-cover bg-center"
+        style={{ backgroundImage: `url('/images/posts/${params.slug}.png')` }}
+      ></div>
+      <div className="flex flex-col posts-center">
+        <MarkDownPost post={post} allPostsData={allPostsData} />
       </div>
     </div>
   );

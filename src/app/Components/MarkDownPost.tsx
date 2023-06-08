@@ -4,39 +4,48 @@ import ReactMarkdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import remarkGfm from "remark-gfm";
-import { Post, PostDetailData } from "../service/post";
+import { Post, PostDetailData, getAllPosts } from "../service/post";
 import { BiCalendarAlt } from "react-icons/bi";
+import RandomItems from "./RandomItems";
 
 type postType = {
   post: PostDetailData;
+  allPostsData: Post[];
 };
 
-const MarkDownPost = ({ post }: postType) => {
+const MarkDownPost = ({ post, allPostsData }: postType) => {
   const headingRenderer = (props: any) => {
     const level = props.level;
     const size = 24 - level * 2; // Calculate the font size based on heading level
 
     return React.createElement(
       `h${level}`,
-      { style: { fontSize: `${size}px`, fontWeight: "bold" } },
+      {
+        style: { fontSize: `${size}px`, fontWeight: "bold", margin: "10px 0" },
+      },
       props.children
     );
   };
+
+  // 현재 상세 페이지에 해당하는 데이터 제외
+  const filteredData = allPostsData.filter((item) => item.path !== post.path);
+
   return (
     <div>
-      <div className="postInfoTop py-3 flex justify-between">
+      <div className="postInfoTop py-3 flex justify-between px-4 mt-2">
         <div className="">
           <h1 className="text-3xl font-extrabold">{post.title}</h1>
           <h4>{post.description}</h4>
           <hr className="border-b-4 border-indigo-500 my-5" />
         </div>
-        <p className="blue flex gap-2 text-indigo-600">
+        <p className="blue flex gap-2 text-indigo-600 font-bold">
           <BiCalendarAlt className="mt-[.25em] " />
           {post.date.toString()}
         </p>
       </div>
 
       <ReactMarkdown
+        className="px-4"
         remarkPlugins={[remarkGfm]}
         components={{
           code({ node, inline, className, children, ...props }) {
@@ -61,6 +70,9 @@ const MarkDownPost = ({ post }: postType) => {
       >
         {post.content}
       </ReactMarkdown>
+
+      {/* 랜덤으로 선택된 UI 컴포넌트 */}
+      <RandomItems filteredData={filteredData} />
     </div>
   );
 };

@@ -35,8 +35,8 @@ const Slider: React.FC<SliderProps> = ({ notFeaturedPosts }) => {
     <Carousel infinite autoPlay responsive={responsive} itemClass="m-2">
       {notFeaturedPosts &&
         notFeaturedPosts.map((item, index) => (
-          <Link href={`/Posts/${item.path}`}>
-            <PostCard item={item} key={index} />
+          <Link href={`/Posts/${item.path}`} key={index}>
+            <PostCard item={item} />
           </Link>
         ))}
     </Carousel>

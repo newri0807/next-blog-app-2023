@@ -18,7 +18,7 @@ const PostCard = ({ item }: PostCardProps) => {
           width={300}
           height={200}
         />
-        <div className="flex flex-col posts-center p-4">
+        <div className="flex flex-col posts-center p-4 min-h-[175px]">
           <time className="self-end text-gray-700">{item.date.toString()}</time>
           <h3 className="text-lg font-bold">{item.title}</h3>
           <p className="w-full truncate text-center">{item.description}</p>
