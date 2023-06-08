@@ -36,7 +36,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ```
 my-blog-app-ver_easy
 ├─ .eslintrc.json
-├─ .gitignore
 ├─ data
 │  ├─ posts
 │  │  ├─ best-react-practices.md
@@ -73,7 +72,17 @@ my-blog-app-ver_easy
 │  └─ app
 │     ├─ About
 │     │  └─ page.tsx
+│     ├─ api
+│     │  └─ email
+│     │     └─ route.ts
 │     ├─ Components
+│     │  ├─ EmailSendForm.tsx
+│     │  ├─ FilteredPosts.tsx
+│     │  ├─ MarkDownPost.tsx
+│     │  ├─ PostCard.tsx
+│     │  ├─ Profile.tsx
+│     │  ├─ RandomItems.tsx
+│     │  ├─ Slider.tsx
 │     │  └─ TopNavi.tsx
 │     ├─ Contact
 │     │  └─ page.tsx
@@ -81,8 +90,13 @@ my-blog-app-ver_easy
 │     ├─ globals.css
 │     ├─ layout.tsx
 │     ├─ page.tsx
-│     └─ Posts
-│        └─ page.tsx
+│     ├─ Posts
+│     │  ├─ page.tsx
+│     │  └─ [slug]
+│     │     └─ page.tsx
+│     └─ service
+│        ├─ post.ts
+│        └─ sendEmail.ts
 ├─ tailwind.config.js
 └─ tsconfig.json
 

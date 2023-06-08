@@ -11,17 +11,17 @@ const page = () => {
         <h1 className="font-extrabold text-2xl mb-3 text-center">Contact Me</h1>
         <ul className="flex justify-center gap-3">
           <li>
-            <Link href={""}>
+            <Link href={"https://github.com/newri0807"} target="_blank">
               <BsGithub className="text-5xl hover:text-zinc-500" />
             </Link>
           </li>
           <li>
-            <Link href={""}>
+            <Link href={"https://twitter.com/Irwen215"} target="_blank">
               <FaTwitterSquare className="text-5xl hover:text-zinc-500" />
             </Link>
           </li>
           <li>
-            <Link href={""}>
+            <Link href={"https://www.instagram.com/_nm.87/"} target="_blank">
               <FaInstagramSquare className="text-5xl hover:text-zinc-500" />
             </Link>
           </li>
