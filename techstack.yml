@@ -2,7 +2,7 @@ repo_name: newri0807/next-blog-app-2023
 report_id: c6cd61fa1787a1d59fd7ccd4b057eccc
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T09:01:45+00:00'
+timestamp: '2024-02-29T18:27:50+00:00'
 requested_by: newri0807
 provider: github
 branch: main
@@ -53,7 +53,7 @@ tools:
   last_updated_by: newri
   last_updated_on: 2023-06-07 06:22:42.000000000 Z
 - name: Next.js
-  description: 'A small framework for server-rendered universal JavaScript apps '
+  description: A small framework for server-rendered universal JavaScript apps
   website_url: https://nextjs.org/
   version: 13.4.4
   open_source: true
